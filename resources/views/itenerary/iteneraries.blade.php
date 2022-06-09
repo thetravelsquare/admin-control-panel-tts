@@ -3,7 +3,12 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-sm-flex align-items-center mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Add Iteneraries</h1>
+            <h1 class="h3 mb-0 text-gray-800">All Iteneraries</h1>
+        </div>
+        <div class="text-right">
+            <a href="{{ route('cities') }}" class="btn btn-dark">All Cities</a>
+            <a href="{{ route('itenerary-add') }}" class="btn btn-dark">Add New Itenerary</a>
+            <a href="{{ route('bulk-upload') }}" class="btn btn-dark">Bulk Upload Itenerary</a>
         </div>
         <hr>
         <div class="card shadow mb-4">

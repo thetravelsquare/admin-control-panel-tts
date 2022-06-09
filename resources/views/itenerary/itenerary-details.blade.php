@@ -9,7 +9,7 @@
         <hr>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Itenerary Details</h6>
+                <h6 class="m-0 font-weight-bold text-dark">Itenerary Details</h6>
             </div>
             <div class="card-body">
                 <form action="{{ route('itenerary-update', $itenerary->id) }}" class="kt-form" method="post" accept-charset="utf-8">
@@ -145,7 +145,7 @@
                     
                     <div class="amenities-items"></div>
                     <div class="text-center mb-2">
-                        <button id="add-more-amenities" class="btn btn-primary" type="button">Add More Amenities</button>
+                        <button id="add-more-amenities" class="btn btn-dark" type="button">Add More Amenities</button>
                     </div>
                     
                     
@@ -169,7 +169,7 @@
         
                     <div class="image-items"></div>
                     <div class="text-center mb-2">
-                        <button class="btn btn-primary" id="add-more-image" type="button">Add More Photos</button>
+                        <button class="btn btn-dark" id="add-more-image" type="button">Add More Photos</button>
                     </div>
                     <div class="form-group row">
                     <label for="input" class="col-2 col-form-label">Experience Video</label>
