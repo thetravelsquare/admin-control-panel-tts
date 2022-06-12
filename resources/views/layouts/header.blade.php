@@ -147,18 +147,18 @@
                 <div id="requests" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Infomation Requests :</h6>
-                        <a class="collapse-item" href="#">General Requests</a>
-                        <a class="collapse-item" href="#">Business Requests</a>
+                        <a class="collapse-item" href="{{ route('general-requests') }}">General Requests</a>
+                        <a class="collapse-item" href="{{ route('business-requests') }}">Business Requests</a>
                         <a class="collapse-item" href="#">Verification Requests</a>
                         <h6 class="collapse-header">Campaign Requests :</h6>
-                        <a class="collapse-item" href="#">PPC Requests</a>
+                        <a class="collapse-item" href="{{ route('ppc-requests') }}">PPC Requests</a>
                         <h6 class="collapse-header">Financial Requests:</h6>
                         <a class="collapse-item" href="#">Cancellation Requests</a>
-                        <a class="collapse-item" href="#">Refund Requests</a>
-                        <a class="collapse-item" href="#">Settlement Requests</a>
-                        <a class="collapse-item" href="#">Payment Link Requests</a>
+                        <a class="collapse-item" href="{{ route('refund-requests') }}">Refund Requests</a>
+                        <a class="collapse-item" href="{{ route('settlement-requests') }}">Settlement Requests</a>
+                        <a class="collapse-item" href="{{ route('payment-requests') }}">Payment Link Requests</a>
                         <h6 class="collapse-header">Booking Requests:</h6>
-                        <a class="collapse-item" href="#">Group Fare Requests</a>
+                        <a class="collapse-item" href="{{ route('group-fare-requests') }}">Group Fare Requests</a>
                     </div>
                 </div>
             </li>

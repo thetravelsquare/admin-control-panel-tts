@@ -10,6 +10,8 @@ use App\Http\Controllers\DealController;
 use App\Http\Controllers\FDController;
 use App\Http\Controllers\IteneraryController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\RefundController;
+use App\Http\Controllers\RequestController;
 
 
 /*
@@ -57,6 +59,24 @@ Route::middleware('admin-auth')->group(function () {
     Route::post('add-city', [CityController::class, 'store'])->name('add-city');
     Route::get('edit-city/{id}', [CityController::class, 'edit'])->name('edit-city');
     Route::post('update-city/{id}', [CityController::class, 'update'])->name('update-city');    
+    
+    // ---------------------------------------------ITENERARY-----------------------------------------
+    Route::get('refund-requests', [RefundController::class, 'index'])->name('refund-requests');
+    Route::get('refund-requests/initiate/{id}', [RefundController::class, 'initiate'])->name('refund.initiate');
+    Route::get('refund-requests/approve/{id}', [RefundController::class, 'approve'])->name('refund.approve');
+    Route::get('refund-requests/reject/{id}', [RefundController::class, 'reject'])->name('refund.reject');
+    
+    // ---------------------------------------------REQUESTS-----------------------------------------
+    Route::get('ppc-requests', [RequestController::class, 'ppcRequests'])->name('ppc-requests');
+    Route::get('general-requests', [RequestController::class, 'generalRequests'])->name('general-requests');
+    Route::get('business-requests', [RequestController::class, 'businessRequests'])->name('business-requests');
+    Route::get('payment-requests', [RequestController::class, 'paymentRequests'])->name('payment-requests');
+    Route::get('group-fare-requests', [RequestController::class, 'groupFareRequests'])->name('group-fare-requests');
+    Route::post('update-group-fare/{id}', [RequestController::class, 'updateFareGF'])->name('update-group-fare');
+    Route::get('settlement-requests', [RequestController::class, 'settlementRequests'])->name('settlement-requests');
+    Route::get('settlement-requests/process/{id}', [RequestController::class, 'processing'])->name('settlement.processing');
+    Route::get('settlement-requests/settle/{id}', [RequestController::class, 'settled'])->name('settlement.settled');
+
 });
 
 
