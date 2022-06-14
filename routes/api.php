@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\IteneraryController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('iteneraries', [IteneraryController::class, 'iteneraries']);
+Route::get('iteneraries/{id}', [IteneraryController::class, 'singleItenerary']);
+
+Route::get('itenerary/{city}', [IteneraryController::class, 'searchByCity']);
+Route::get('cities', [IteneraryController::class, 'cityList']);
