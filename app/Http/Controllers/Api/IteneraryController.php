@@ -11,14 +11,27 @@ class IteneraryController extends Controller
 {
     public function iteneraries(){
         $iteneraries = Itenerary::all();
+        $i = [];
+        foreach($iteneraries as $itenerary){
+            $itenerary->ammenities = json_decode($itenerary->ammenities);
+            $itenerary->photos_of_experience = json_decode($itenerary->photos_of_experience);
+            $itenerary->tour_itenarary = json_decode($itenerary->tour_itenarary);
+
+            array_push($i, $itenerary);
+        }
         return response()->json([
-            'data' => $iteneraries,
+            'data' => $i,
             'status' => 200
         ]);
     }
 
     public function singleItenerary($id){
         $iteneraries = Itenerary::where('id', $id)->first();
+
+        $iteneraries->ammenities = json_decode($iteneraries->ammenities);
+        $iteneraries->photos_of_experience = json_decode($iteneraries->photos_of_experience);
+        $iteneraries->tour_itenarary = json_decode($iteneraries->tour_itenarary);
+
         if($iteneraries){
             return response()->json([
                 'data' => $iteneraries,
@@ -27,16 +40,25 @@ class IteneraryController extends Controller
         }else{
             return response()->json([
                 'message' => 'Itenerary Not Found',
-                'status' => 200
+            'status' => 200
             ]);
         }
     }
 
     public function searchByCity($city){
         $iteneraries = Itenerary::where('city', 'LIKE', $city)->get();
-        if($iteneraries != '' || $iteneraries != NULL){
+        $i = [];
+        foreach($iteneraries as $itenerary){
+            $itenerary->ammenities = json_decode($itenerary->ammenities);
+            $itenerary->photos_of_experience = json_decode($itenerary->photos_of_experience);
+            $itenerary->tour_itenarary = json_decode($itenerary->tour_itenarary);
+
+            array_push($i, $itenerary);
+        }
+
+        if($i != '' || $i != NULL){
             return response()->json([
-                'data' => $iteneraries,
+                'data' => $i,
                 'status' => 200
             ]);
         }
