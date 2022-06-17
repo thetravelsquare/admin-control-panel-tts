@@ -19,6 +19,7 @@
                                 <th>ID</th>
                                 <th>Headline</th>
                                 <th>Blog</th> 
+                                <th>Status</th> 
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -28,6 +29,15 @@
                                 <td>{{ $blog->id }}</td>
                                 <td>{{ $blog->headline }}</td>
                                 <td>{{ $blog->blog }}</td> 
+                                <td>
+                                    @if ($blog->status == 1)
+                                        <div class="text-success">Approved</div>
+                                    @elseif($blog->status == NULL)
+                                    <div class="text-secondary">Pending</div>
+                                    @else
+                                    <div class="text-danger">Rejected</div>
+                                    @endif
+                                </td> 
                                 <td><button class="btn btn-dark" data-toggle="modal" data-target="#blogModal-{{ $blog->id }}">Edit</button></td>
                             </tr>
                             <div class="modal" id="blogModal-{{ $blog->id }}">
@@ -50,7 +60,8 @@
                                                         value="{{ $blog->blog }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
-                                                    <button class="btn btn-dark btn-block">Submit</button>
+                                                    <a href="{{ route('blog-approve', $blog->id) }}" class="btn btn-dark btn-block">Approve</a>
+                                                    <a href="{{ route('blog-reject', $blog->id) }}" class="btn btn-dark btn-block">Reject</a>
                                                 </div>
                                             {{-- </form> --}}
                                         </div>

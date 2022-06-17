@@ -11,4 +11,20 @@ class BlogController extends Controller
         $blogs = Blog::all();
         return view('blogs', compact('blogs'));
     }
+
+    public function approve($id){
+        $blog = Blog::where('id', $id)->first();
+        $blog->status = 1;
+        if($blog->save()){
+            return back()->with('success', 'Blog Approved Successfully');
+        }
+    }
+
+    public function reject($id){
+        $blog = Blog::where('id', $id)->first();
+        $blog->status = 0;
+        if($blog->save()){
+            return back()->with('error', 'Blog Rejected Successfully');
+        }
+    }
 }

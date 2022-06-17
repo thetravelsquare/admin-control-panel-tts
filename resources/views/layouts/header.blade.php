@@ -175,7 +175,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
 
                         <h6 class="collapse-header">Manual & Gateway :</h6>
-                        <a class="collapse-item" href="#">All Accounts</a>
+                        <a class="collapse-item" href="{{ route('all-accounts') }}">All Accounts</a>
                         <a class="collapse-item" href="#">All Transactions</a>
                         <h6 class="collapse-header">TravPay :</h6>
                         <a class="collapse-item" href="#">x</a>

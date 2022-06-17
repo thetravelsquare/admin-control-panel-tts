@@ -31,6 +31,7 @@ Route::middleware('admin-auth')->group(function () {
     });
 
     Route::get('all-partners', [PartnerController::class, 'index'])->name('all-partners');
+    Route::get('all-accounts', [PartnerController::class, 'allAccounts'])->name('all-accounts');
 
     Route::get('currency', [CurrencyController::class, 'index'])->name('currency');
     Route::post('currency', [CurrencyController::class, 'store'])->name('currency');
@@ -40,6 +41,9 @@ Route::middleware('admin-auth')->group(function () {
     Route::post('currency-value-editor/{id}', [CurrencyController::class, 'updateCurrencyValue'])->name('currency-value-editor');
 
     Route::get('blogs', [BlogController::class, 'index'])->name('blogs');
+    Route::get('blog-approve/{id}', [BlogController::class, 'approve'])->name('blog-approve');
+    Route::get('blog-reject/{id}', [BlogController::class, 'reject'])->name('blog-reject');
+
     Route::get('deals', [DealController::class, 'index'])->name('deals');
     Route::get('fds', [FDController::class, 'index'])->name('fds');
 
