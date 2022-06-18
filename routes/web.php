@@ -12,6 +12,7 @@ use App\Http\Controllers\IteneraryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\RefundController;
 use App\Http\Controllers\RequestController;
+use App\Http\Controllers\BookingController;
 
 
 /*
@@ -32,6 +33,8 @@ Route::middleware('admin-auth')->group(function () {
 
     Route::get('all-partners', [PartnerController::class, 'index'])->name('all-partners');
     Route::get('all-accounts', [PartnerController::class, 'allAccounts'])->name('all-accounts');
+    Route::get('partner-approve/{id}', [PartnerController::class, 'approve'])->name('partner-approve');
+    Route::get('partner-reject/{id}', [PartnerController::class, 'reject'])->name('partner-reject');
 
     Route::get('currency', [CurrencyController::class, 'index'])->name('currency');
     Route::post('currency', [CurrencyController::class, 'store'])->name('currency');
@@ -64,6 +67,11 @@ Route::middleware('admin-auth')->group(function () {
     Route::get('edit-city/{id}', [CityController::class, 'edit'])->name('edit-city');
     Route::post('update-city/{id}', [CityController::class, 'update'])->name('update-city');    
     
+
+    // ---------------------------------------------BOOKINGS-----------------------------------------
+    Route::get('bookings', [BookingController::class, 'index'])->name('bookings');
+
+
     // ---------------------------------------------ITENERARY-----------------------------------------
     Route::get('refund-requests', [RefundController::class, 'index'])->name('refund-requests');
     Route::get('refund-requests/initiate/{id}', [RefundController::class, 'initiate'])->name('refund.initiate');

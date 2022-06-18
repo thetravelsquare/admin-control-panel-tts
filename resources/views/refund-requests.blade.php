@@ -11,16 +11,16 @@
                 <h6 class="m-0 font-weight-bold text-primary">All Refund Request's</h6>
             </div>
             <div class="card-body">
-                @if (Session::get('success'))
-        <script>
-            setTimeout(function() {
-                $('.alert').fadeOut(1000);
-            }, 10000);
-        </script>
-        <div class="alert alert-success">
-            {{ session::get('success') }}
-        </div>
-        @endif
+            @if (Session::get('success'))
+                <script>
+                    setTimeout(function() {
+                        $('.alert').fadeOut(1000);
+                    }, 10000);
+                </script>
+                <div class="alert alert-success">
+                    {{ session::get('success') }}
+                </div>
+            @endif
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>

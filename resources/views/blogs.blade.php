@@ -12,6 +12,26 @@
                 <h6 class="m-0 font-weight-bold text-primary">All Blogs</h6>
             </div>
             <div class="card-body">
+            @if(Session::get('success'))
+                <script>
+                    setTimeout(function() {
+                        $('.alert').fadeOut(1000);
+                    }, 10000);
+                </script>
+                <div class="alert alert-success">
+                    {{ session::get('success') }}
+                </div>
+            @endif
+            @if(Session::get('error'))
+                <script>
+                    setTimeout(function() {
+                        $('.alert').fadeOut(1000);
+                    }, 10000);
+                </script>
+                <div class="alert alert-danger">
+                    {{ session::get('error') }}
+                </div>
+            @endif
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -60,8 +80,12 @@
                                                         value="{{ $blog->blog }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
-                                                    <a href="{{ route('blog-approve', $blog->id) }}" class="btn btn-dark btn-block">Approve</a>
-                                                    <a href="{{ route('blog-reject', $blog->id) }}" class="btn btn-dark btn-block">Reject</a>
+                                                    @if($blog->status == 0 || $blog->status == NULL || $blog->status == 'pending' || $blog->status == '' || empty($blog->status))
+                                                        <a href="{{ route('blog-approve', $blog->id) }}" class="btn btn-dark btn-block">Approve</a>
+                                                    @endif
+                                                    @if($blog->status == 1 || $blog->status == 'pending' || $blog->status == '' || $blog->status == NULL || empty($blog->status))
+                                                        <a href="{{ route('blog-reject', $blog->id) }}" class="btn btn-dark btn-block">Reject</a>
+                                                    @endif
                                                 </div>
                                             {{-- </form> --}}
                                         </div>
