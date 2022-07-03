@@ -48,7 +48,7 @@
     <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{ asset('assests/js/sb-admin-2.min.js') }}"></script>
+    <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
     <script src="{{ asset('assets/vendor/chart.js/Chart.min.js') }}"></script>
@@ -57,6 +57,34 @@
     <script src="{{ asset('assets/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('assets/js/demo/chart-pie-demo.js') }}"></script>
 
+    <!-- DataTables -->
+
+
+
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+        $('#dataTable').DataTable( {
+            scrollX: true,
+            dom: 'lBfrtip',
+            buttons: [
+                {
+                extend: 'pdf',
+                text: 'Export In PDF'
+                },
+                {
+                extend: 'excel',
+                text: 'Export In Excel'
+                },
+                'print',
+            ],
+            "aLengthMenu": [[10, 25, 50, 75, -1], [10, 25, 50, 75, "All"]],
+            "pageLength": 10,
+        } );
+    } );
+    </script>
 </body>
 
 </html>

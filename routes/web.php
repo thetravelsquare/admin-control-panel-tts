@@ -49,6 +49,12 @@ Route::middleware('admin-auth')->group(function () {
 
     Route::get('deals', [DealController::class, 'index'])->name('deals');
     Route::get('fds', [FDController::class, 'index'])->name('fds');
+    Route::get('partner-fds', [FDController::class, 'partnerFD'])->name('partner-fds');
+    Route::get('add-partner-fds', [FDController::class, 'createPartnerFD'])->name('add-partner-fds');
+    Route::post('add-partner-fds', [FDController::class, 'addPartnerFD'])->name('add-partner-fds');
+    Route::get('edit-partner-fd/{id}', [FDController::class, 'editPartnerFD'])->name('edit-partner-fd');
+    Route::post('update-partner-fd/{id}', [FDController::class, 'updatePartnerFD'])->name('update-partner-fd');
+    // Route::get('partner-fds', [FDController::class, 'partnerFD'])->name('partner-fds');
 
 
     // ---------------------------------------------ITENERARY-----------------------------------------
@@ -84,7 +90,9 @@ Route::middleware('admin-auth')->group(function () {
     Route::get('business-requests', [RequestController::class, 'businessRequests'])->name('business-requests');
     Route::get('payment-requests', [RequestController::class, 'paymentRequests'])->name('payment-requests');
     Route::get('group-fare-requests', [RequestController::class, 'groupFareRequests'])->name('group-fare-requests');
+    Route::get('partner-group-fare-requests', [RequestController::class, 'partnerGroupFareRequests'])->name('partner-group-fare-requests');
     Route::post('update-group-fare/{id}', [RequestController::class, 'updateFareGF'])->name('update-group-fare');
+    Route::post('update-partner-group-fare/{id}', [RequestController::class, 'updatePartnerFareGF'])->name('update-partner-group-fare');
     Route::get('settlement-requests', [RequestController::class, 'settlementRequests'])->name('settlement-requests');
     Route::get('settlement-requests/process/{id}', [RequestController::class, 'processing'])->name('settlement.processing');
     Route::get('settlement-requests/settle/{id}', [RequestController::class, 'settled'])->name('settlement.settled');

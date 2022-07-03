@@ -7,6 +7,8 @@ use App\Models\ContactForm;
 use App\Models\PaymentRequest;
 use App\Models\SettlementRequest;
 use App\Models\GroupFareRequest;
+use App\Models\PartnerGroupFareRequest;
+
 
 class RequestController extends Controller
 {
@@ -35,8 +37,21 @@ class RequestController extends Controller
         return view('requests.group-fare-requests', compact('group_fare_requests'));
     }
 
+    public function partnerGroupFareRequests(){
+        $group_fare_requests = PartnerGroupFareRequest::orderBy('created_at', 'desc')->get();
+        return view('requests.partner-group-fare-requests', compact('group_fare_requests'));
+    }
+
     public function updateFareGF($id, Request $request){
         $group_fare_request = GroupFareRequest::find($id);
+        
+        $group_fare_request->fare = $request->fare;
+        $group_fare_request->save();
+        return redirect()->back()->with('success', 'Fare updated successfully');
+    }
+
+    public function updatePartnerFareGF($id, Request $request){
+        $group_fare_request = PartnerGroupFareRequest::find($id);
         
         $group_fare_request->fare = $request->fare;
         $group_fare_request->save();
