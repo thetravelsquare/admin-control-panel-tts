@@ -17,6 +17,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Deal ID</th>
                                 <th>Title</th>
                                 <th>New Price</th> 
                                 <th>Old Price</th>
@@ -30,14 +31,16 @@
                                 <th>Package Type</th>
                                 <th>Inclusion</th>
                                 <th>Status</th>
-                                <th>Verified</th>
+                                {{-- <th>Verified</th> --}}
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @php $i = 1 @endphp
                             @foreach ($deals as $deal)
                             <tr>
-                                <td>{{ $deal->id }}</td>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $deal->deal_id }}</td>
                                 <td>{{ $deal->title }}</td>
                                 <td>{{ $deal->new_price }}</td>
                                 <td>{{ $deal->old_price }}</td>
@@ -51,7 +54,7 @@
                                 <td>{{ $deal->package_type }}</td>
                                 <td>{{ $deal->inclusion }}</td>
                                 <td>{{ $deal->status }}</td>
-                                <td>{{ $deal->is_verified }}</td> 
+                                {{-- <td>{{ $deal->is_verified }}</td>  --}}
                                 <td><button class="btn btn-dark" data-toggle="modal" data-target="#blogModal-{{ $deal->id }}">Details</button></td>
                             </tr>
                             <div class="modal" id="blogModal-{{ $deal->id }}">
@@ -67,112 +70,117 @@
                                                 @csrf
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="id_tag">ID Tag</label>
-                                                    <input readonly type="text" name="id_tag" placeholder="Blog Headline"
+                                                    <input readonly type="text" name="id_tag" placeholder="ID Tag"
                                                         value="{{ $deal->id_tag }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
+                                                    <label class="mb-0 small font-weight-bold pb-0" for="id_tag">Deal ID</label>
+                                                    <input readonly type="text" name="id_tag" placeholder=""
+                                                        value="{{ $deal->deal_id }}" class="form-control">
+                                                </div>
+                                                <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="partner_id">Partner ID</label>
-                                                    <input readonly type="text" name="partner_id	" placeholder="Blog"
+                                                    <input readonly type="text" name="partner_id	" placeholder="Partner ID"
                                                         value="{{ $deal->partner_id	 }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="deal_type_id">Deal Type ID</label>
-                                                    <input readonly type="text" name="deal_type_id" placeholder="Blog"
+                                                    <input readonly type="text" name="deal_type_id"
                                                         value="{{ $deal->deal_type_id }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="title">Title</label>
-                                                    <input readonly type="text" name="title" placeholder="Blog"
+                                                    <input readonly type="text" name="title"
                                                         value="{{ $deal->title }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="currency_id">Currency ID</label>
-                                                    <input readonly type="text" name="currency_id" placeholder="Blog"
+                                                    <input readonly type="text" name="currency_id"
                                                         value="{{ $deal->currency_id }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="new_price">New Price</label>
-                                                    <input readonly type="text" name="new_price" placeholder="Blog"
+                                                    <input readonly type="text" name="new_price"
                                                         value="{{ $deal->new_price }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="old_price">Old Price</label>
-                                                    <input readonly type="text" name="old_price" placeholder="Blog"
+                                                    <input readonly type="text" name="old_price"
                                                         value="{{ $deal->old_price }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="noofdays">No Of Days</label>
-                                                    <input readonly type="text" name="noofdays" placeholder="Blog"
+                                                    <input readonly type="text" name="noofdays"
                                                         value="{{ $deal->noofdays }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="noofnights">No Of Nights</label>
-                                                    <input readonly type="text" name="noofnights" placeholder="Blog"
+                                                    <input readonly type="text" name="noofnights"
                                                         value="{{ $deal->noofnights }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="tac">TAC</label>
-                                                    <input readonly type="text" name="tac" placeholder="Blog"
+                                                    <input readonly type="text" name="tac"
                                                         value="{{ $deal->tac }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="unit_type">Unit Type</label>
-                                                    <input readonly type="text" name="unit_type" placeholder="Blog"
+                                                    <input readonly type="text" name="unit_type"
                                                         value="{{ $deal->unit_type }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="details">Details</label>
-                                                    <input readonly type="text" name="details" placeholder="Blog"
+                                                    <input readonly type="text" name="details"
                                                         value="{{ $deal->details }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="cancelation_policy">Cancellation Policy</label>
-                                                    <input readonly type="text" name="cancelation_policy" placeholder="Blog"
+                                                    <input readonly type="text" name="cancelation_policy"
                                                         value="{{ $deal->cancelation_policy }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="dates_of_travel">Dates Of Travel</label>
-                                                    <input readonly type="text" name="dates_of_travel" placeholder="Blog"
+                                                    <input readonly type="text" name="dates_of_travel"
                                                         value="{{ $deal->dates_of_travel }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="destination">Destination</label>
-                                                    <input readonly type="text" name="destination" placeholder="Blog"
+                                                    <input readonly type="text" name="destination"
                                                         value="{{ $deal->destination }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="valid_untill">Valid Till</label>
-                                                    <input readonly type="text" name="valid_untill" placeholder="Blog"
+                                                    <input readonly type="text" name="valid_untill"
                                                         value="{{ $deal->valid_untill }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="hotel_name_room_meal">Hotel Name</label>
-                                                    <input readonly type="text" name="hotel_name_room_meal" placeholder="Blog"
+                                                    <input readonly type="text" name="hotel_name_room_meal"
                                                         value="{{ $deal->hotel_name_room_meal }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="flight_trip_type">Flight Trip Type</label>
-                                                    <input readonly type="text" name="flight_trip_type" placeholder="Blog"
+                                                    <input readonly type="text" name="flight_trip_type"
                                                         value="{{ $deal->flight_trip_type }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="package_type">Package Type</label>
-                                                    <input readonly type="text" name="package_type" placeholder="Blog"
+                                                    <input readonly type="text" name="package_type"
                                                         value="{{ $deal->package_type }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="inclusion">Inclusion</label>
-                                                    <input readonly type="text" name="inclusion" placeholder="Blog"
+                                                    <input readonly type="text" name="inclusion"
                                                         value="{{ $deal->inclusion }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="status">Status</label>
-                                                    <input readonly type="text" name="status" placeholder="Blog"
+                                                    <input readonly type="text" name="status"
                                                         value="{{ $deal->status }}" class="form-control">
                                                 </div>
                                                 <div class="col m-2">
                                                     <label class="mb-0 small font-weight-bold pb-0" for="is_verified">Is Verified</label>
-                                                    <input readonly type="text" name="is_verified" placeholder="Blog"
+                                                    <input readonly type="text" name="is_verified"
                                                         value="{{ $deal->is_verified }}" class="form-control">
                                                 </div>
                                                 
